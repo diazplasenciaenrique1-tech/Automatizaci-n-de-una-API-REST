@@ -1,0 +1,65 @@
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/Booking"
+    },
+    {
+      "type": "object",
+      "required": ["bookingid", "booking"],
+      "properties": {
+        "bookingid": {
+          "type": "integer"
+        },
+        "booking": {
+          "$ref": "#/definitions/Booking"
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "Booking": {
+      "type": "object",
+      "required": [
+        "firstname",
+        "lastname",
+        "totalprice",
+        "depositpaid",
+        "bookingdates"
+      ],
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "totalprice": {
+          "type": "integer"
+        },
+        "depositpaid": {
+          "type": "boolean"
+        },
+        "bookingdates": {
+          "type": "object",
+          "required": ["checkin", "checkout"],
+          "properties": {
+            "checkin": {
+              "type": "string"
+            },
+            "checkout": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "additionalneeds": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
